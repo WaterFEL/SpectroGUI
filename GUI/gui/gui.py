@@ -261,7 +261,7 @@ class SpectroGUI(QMainWindow):
                 #After Update.py is updated to its most recent version, reload it and reimport the Update function
                 reload(update_module)
                 Update_GUI_files = update_module.Update_GUI_files
-                from gui.Update import Update_GUI_files
+                from gui.update import Update_GUI_files
 
                 #update the rest of the ORCA GUI .py modules to their most recent version using calls from the now up-to-date Update.py file
                 Update_GUI_files(repo_url, root, ID_file, repo_SHA, delete_dir, ensure_update)                

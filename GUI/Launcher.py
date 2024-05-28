@@ -18,12 +18,6 @@ Functionality to be added:
 import importlib, platform, os, sys, shutil, subprocess
 from pathlib import Path
 
-from io import StringIO
-from datetime import datetime
-
-import stat
-import time
-
 # Before the GUI launches, check that the user has the required packages to run the UVPD analysis GUI
 #The most troublesome package is Git, which also requires GitHub desktop to be on the user's machine. First, we check if it is installed.
 
