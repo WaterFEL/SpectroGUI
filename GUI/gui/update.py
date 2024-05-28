@@ -58,7 +58,7 @@ def Update_GUI_files(repo_url, root, ID_file, repo_SHA, delete_dir_function, ens
             str(os.path.join(root, 'gui', 'tabs_7600.py')): str(os.path.join(temp_dir, 'GUI', 'gui', 'tabs_7600.py')), #GUI layout for all tabs related to the QTRAP7600
 
             #SCIEX specific workflows
-            str(os.path.join(root, 'SCIEX', 'process_UVPD_5500.py')): str(os.path.join(temp_dir, 'GUI', 'workflows', 'process_UVPD_5500.py')), #Main function for processing UVPD data taken on the QTRAP 5500 
+            str(os.path.join(root, 'SCIEX', 'process_UVPD_5500.py')): str(os.path.join(temp_dir, 'GUI', 'SCIEX', 'process_UVPD_5500.py')), #Main function for processing UVPD data taken on the QTRAP 5500 
 
             #Generic workflows
             str(os.path.join(root, 'workflows', 'calc_PE.py')): str(os.path.join(temp_dir, 'GUI', 'workflows', 'calc_PE.py')), #Functions to calculate photofrag efficiency
