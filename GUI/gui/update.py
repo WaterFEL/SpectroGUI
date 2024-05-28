@@ -37,7 +37,7 @@ def Update_GUI_files(repo_url, root, ID_file, repo_SHA, delete_dir_function, ens
         update_script_path = os.path.join(temp_dir, 'initial_update.py')
         
         #ensure that the Update.py script is replaced with the most recent version before updating any other files, as dependencies can change over time
-        update_files = {str(os.path.join(root, 'gui', 'Update.py')): str(os.path.join(temp_dir, 'GUI', 'gui', 'Update.py'))} #Update function
+        update_files = {str(os.path.join(root, 'gui', 'update.py')): str(os.path.join(temp_dir, 'GUI', 'gui', 'update.py'))} #Update function
     
     else:
         print(f'{datetime.now().strftime("[ %H:%M:%S ]")} Updating all .py modules to their most recent version...')
