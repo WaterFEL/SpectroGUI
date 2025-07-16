@@ -239,14 +239,20 @@ if __name__ == '__main__':
     #check if msconvert is available in the systems PATH
     def check_msconvert():
         try:
-            subprocess.run(['msconvert'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-            return True
-        except subprocess.CalledProcessError:
-            return False   
-        #The msconvert module from Proteowizard could not be found. It is either not installed or not available in your systems PATH
-        except FileNotFoundError:
+            #Run msconvert to see if it runs
+            result = subprocess.run(['msconvert'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            print(result)
+            print(result.returncode)
+            
+            #Check if 'msconvert' appears in the output (this indicates it was found)
+            if result.returncode == 0 or result.returncode != 0:
+                return True
             return False
-     
+        
+        except FileNotFoundError:
+            # msconvert is not found in the system PATH
+            return False
+        
     #Check if msconvert is available
     if not check_msconvert():
         print('The msconvert executable is not available on your machine. Please install ProteoWizard and/or make sure the directory that contains msconvert it is in your system PATH. Please see the readme on the main GitHub page.')

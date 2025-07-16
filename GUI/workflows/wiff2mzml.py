@@ -20,14 +20,20 @@ def convert_wiff_to_mzml(wiff_file, directory, mzml_directory):
         return False
 
     try:
-        #create a file to bypass the 250 character limit of msconvert, then delete it
-        temp_command_file = os.path.join(directory, 'msconvert_command.txt')
-        
-        with open(temp_command_file, 'w') as opf:
-            opf.write('"{os.path.join(directory, wiff_file)}" -o "{mzml_directory}" --mzML --64\n') 
 
-        subprocess.run(['msconvert', os.path.join(directory, wiff_file), '-o', mzml_directory, '--mzML', '--64'])
-        os.remove(temp_command_file)
+        # Use subprocess.run and capture output for debugging
+        result = subprocess.run(['msconvert', os.path.join(directory, wiff_file), '-o', mzml_directory, '--mzML', '--64', '--verbose'],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        
+        # Print command output for debugging purposes
+        print(f"msconvert stdout:\n{result.stdout}")
+        print(f"msconvert stderr:\n{result.stderr}")
+
+        # Check the result and raise an error if the command failed
+        if result.returncode != 0:
+            print(f"msconvert failed with return code {result.returncode}. Check the output above for details.")
+            return False
+
         time.sleep(2)
 
         return True
